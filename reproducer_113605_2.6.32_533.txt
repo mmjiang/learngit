@@ -1,0 +1,29 @@
+uname -a
+Linux hp-dl580g8-01.rhts.eng.nay.redhat.com 2.6.32-533.el6.x86_64 #1 SMP Mon Feb 16 19:29:08 EST 2015 x86_64 x86_64 x86_64 GNU/Linux
+
+lsb_release -a
+LSB Version:	:base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-noarch
+Distributor ID:	RedHatEnterpriseServer
+Description:	Red Hat Enterprise Linux Server release 6.7 Beta (Santiago)
+Release:	6.7
+Codename:	Santiago
+
+dhclient eth6  //ip:192.168.1.209
+ping 192.168.1.254
+ping success
+
+ifconfig eth6 hw ether F4:52:14:10:A1:81
+ping 192.168.1.254
+ping success
+
+ifconfig eth6 down
+ifconfig eth6 hw ether F4:52:14:10:A1:80
+ifconfig eth6 192.168.1.209
+ping 192.168.1.254
+ping success
+
+ifconfig eth6 hw ether F4:52:14:10:A1:7F
+mlx4_en: eth6: Failed changing HW MAC address   //the hwaddr has been changed actually
+SIOCSIFHWADDR: Invalid argument
+ping 192.168.1.254
+ping fail:Destination Host Unreachable
