@@ -27,3 +27,15 @@ mlx4_en: eth6: Failed changing HW MAC address   //the hwaddr has been changed ac
 SIOCSIFHWADDR: Invalid argument
 ping 192.168.1.254
 ping fail:Destination Host Unreachable
+
+
+Issue sovlved on 2.6.32-555.el6.x86_64
+
+1).dhclient eth6
+2).ping 192.168.1.254
+3).ifconfig eth6 hw ether F4:52:14:10:A1:81
+4).ping 192.168.1.254
+5).ifconfig eth6 down
+6).ifconfig eth6 hw ether F4:52:14:10:A1:80
+7).ifconfig eth6 192.168.1.209
+8).ping 192.168.1.254
